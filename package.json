@@ -1,0 +1,27 @@
+{
+  "name": "trabalho_api_login",
+  "version": "1.0.0",
+  "description": "API REST simples para registro e login de usuários, criada para fins de aprendizado de testes e automação de APIs.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test/**/*.test.js --timeout 10000",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataliaFerreiraVentura/PGATS-API-LOGIN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/NataliaFerreiraVentura/PGATS-API-LOGIN/issues"
+  },
+  "homepage": "https://github.com/NataliaFerreiraVentura/PGATS-API-LOGIN#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

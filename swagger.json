@@ -1,0 +1,121 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Login",
+    "version": "1.0.0",
+    "description": "API para registro e login de usuários."
+  },
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Registrar novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "login": { "type": "string" },
+                  "password": { "type": "string" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string" }
+                },
+                "required": ["login", "password", "name", "email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário registrado com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Usuário registrado com sucesso",
+                  "user": {
+                    "login": "usuario123",
+                    "name": "Usuário Exemplo",
+                    "email": "usuario@example.com"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro de validação: campos obrigatórios ausentes ou usuário já registrado.",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "CamposAusentes": {
+                    "summary": "Campos obrigatórios não enviados",
+                    "value": { "error": "Login, senha, nome e email são obrigatórios." }
+                  },
+                  "UsuarioDuplicado": {
+                    "summary": "Usuário já existe",
+                    "value": { "error": "Usuário já existente." }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login de usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "login": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["login", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login realizado com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Login realizado com sucesso",
+                  "user": {
+                    "login": "usuario123",
+                    "name": "Usuário Exemplo",
+                    "email": "usuario@example.com",
+                    "token": "jwt.token.aqui"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro de validação (campos obrigatórios ausentes) ou credenciais inválidas.",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "CamposAusentes": {
+                    "summary": "Campos obrigatórios não enviados",
+                    "value": { "error": "Login e senha são obrigatórios." }
+                  },
+                  "CredenciaisInvalidas": {
+                    "summary": "Credenciais inválidas",
+                    "value": { "error": "Login ou senha inválidos." }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
