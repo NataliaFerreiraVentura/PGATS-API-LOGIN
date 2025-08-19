@@ -11,7 +11,7 @@ router.post('/register', (req, res) => {
     const result = userService.registerUser(login, password, name, email);
     if (result.error) {
         if (result.error === 'Usuário já existente') {
-            return res.status(401).json({ error: result.error });
+            return res.status(400).json({ error: result.error });
         }
         return res.status(400).json({ error: result.error });
     }
@@ -23,20 +23,23 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
     const { login, password } = req.body;
+
     if (!login || !password) {
         return res.status(400).json({ error: 'Login e senha são obrigatórios.' });
     }
-    const result = userService.loginUser(login, password);
-    if (result.error) {
-        if (result.error === 'Login ou senha inválidos.') {
-            return res.status(400).json({ error: result.error });
-        }
-        return res.status(400).json({ error: result.error });
+
+    const { user, error } = userService.loginUser(login, password);
+
+    if (error) {
+        const status = error === 'Login ou senha inválidos.' ? 401 : 400;
+        return res.status(status).json({ error });
     }
-    const token = jwt.sign({ login: result.user.login }, SECRET, { expiresIn: '1h' });
+
+    const token = jwt.sign({ id: user.id, login: user.login }, SECRET, { expiresIn: '1h' });
+
     res.status(200).json({
         mensagem: 'Login realizado com sucesso',
-        user: result.user,
+        user,
         token
     });
 });

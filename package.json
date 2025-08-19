@@ -4,7 +4,7 @@
   "description": "API REST simples para registro e login de usuários, criada para fins de aprendizado de testes e automação de APIs.",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js --timeout 10000",
+    "test": "mocha ./test/**/*.test.js --timeout 10000",
     "start": "node server.js"
   },
   "repository": {
@@ -20,8 +20,14 @@
   },
   "homepage": "https://github.com/NataliaFerreiraVentura/PGATS-API-LOGIN#readme",
   "dependencies": {
+    "chai": "^5.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "sinon": "^21.0.0",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.1",
+    "supertest": "^7.1.4"
   }
 }
