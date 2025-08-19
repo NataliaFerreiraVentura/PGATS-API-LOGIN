@@ -8,7 +8,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+mochawesome-report/
 # Diretório de build/output
 dist/
 build/
