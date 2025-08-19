@@ -1,15 +1,21 @@
-# API de Login
+# API de Autenticação de Usuários
 
-API REST simples para registro e login de usuários, criada para fins de aprendizado de testes e automação de APIs.
+API REST para registro e autenticação de usuários, desenvolvida como projeto de aprendizado em testes e automação de APIs.
 
 ## Funcionalidades
-- Registro de usuários
-- Login de usuários
-- Validação de dados
-- Documentação Swagger disponível em `/api-docs`
+
+- **Registro de usuários**
+  - Criação de conta com e-mail e senha
+  - Validação de campos obrigatórios
+  - Verificação de duplicidade de e-mail
+
+- **Login de usuários**
+  - Autenticação com credenciais válidas
+  - Geração de token JWT para autorização
+  - Tratamento de credenciais inválidas
 
 ## Estrutura do Projeto
-```
+
 src/
    controllers/      # Lógica de rotas
    services/         # Lógica de negócio
@@ -17,27 +23,35 @@ src/
    middleware/       # Autenticação (opcional)
    app.js            # Inicializa o Express
    server.js         # Inicializa o servidor
+Test/                # Testes automatizados (Mocha, Chai, Supertest)
 swagger.json        # Documentação da API
 README.md           # Instruções
 ```
-
-## Instalação
+## Instalação 
 1. Instale as dependências:
    ```cmd
-   npm install express swagger-ui-express
+   npm install   
    ```
 2. Inicie o servidor:
    ```cmd
-   node src/server.js
+   node server.js
    ```
 
-## Uso
-- Registro: `POST /users/register` (body: `{ "login": "usuario", "password": "senha" }`)
-- Login: `POST /users/login` (body: `{ "login": "usuario", "password": "senha" }`)
-- Documentação: Acesse [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+## Documentação Swagger
 
-## Testes
-O arquivo `app.js` pode ser importado para testes com Supertest sem iniciar o servidor.
+## 📚 Documentação da API
+
+A documentação interativa da API está disponível através do Swagger UI. Após iniciar o servidor, acesse: http://localhost:3000/api-docs
+
+## Tecnologias Utilizadas
+- Node.js
+- Express
+- JSON Web Token (jsonwebtoken)
+- Swagger UI Express
+- Mocha (testes)
+- Chai (assertions)
+- Sinon (mocks/stubs)
+- Supertest (testes de API)
 
 ---
-API para aprendizado de testes e automação de APIs.
+API para aprendizado de testes e automação de APIs. PGATS - 2025-02
