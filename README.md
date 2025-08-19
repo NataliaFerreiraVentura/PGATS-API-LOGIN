@@ -43,6 +43,19 @@ README.md           # Instruções
 
 A documentação interativa da API está disponível através do Swagger UI. Após iniciar o servidor, acesse: http://localhost:3000/api-docs
 
+## Integração Contínua (CI/CD)
+Este projeto utiliza GitHub Actions para rodar testes automatizados a cada push ou pull request na branch principal (`main`).
+
+### Pipeline
+- Instala dependências do Node.js
+- Executa testes automatizados (Mocha, Chai, Supertest)
+- Gera relatório de testes com Mochawesome
+- Faz upload do relatório como artefato do workflow
+
+O arquivo de configuração da pipeline está em `.github/workflows/api-tests.yml`.
+
+Após cada execução, o relatório dos testes pode ser baixado na interface do GitHub Actions, facilitando a análise dos resultados e a rastreabilidade dos testes.
+
 ## Tecnologias Utilizadas
 - Node.js
 - Express
