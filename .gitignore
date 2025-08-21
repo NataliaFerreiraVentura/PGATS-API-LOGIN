@@ -49,6 +49,8 @@ coverage/
 # Debugger config
 .vscode/
 
+mochawesome-report/
+
 # Outros arquivos que não precisam ir para o repositório
 *.bak
 *.swp
