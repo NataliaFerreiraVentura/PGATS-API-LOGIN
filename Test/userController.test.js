@@ -5,7 +5,7 @@ const { expect } = require('chai');
 const app = require('../src/app');
 const userService = require('../src/services/userService');
 
-describe('Usuários', () => {
+describe('API LOGIN', () => {
 
     afterEach(() => sinon.restore());
 
