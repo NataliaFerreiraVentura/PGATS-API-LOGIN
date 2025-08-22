@@ -4,7 +4,7 @@
   "description": "API REST simples para registro e login de usuários, criada para fins de aprendizado de testes e automação de APIs.",
   "main": "app.js",
   "scripts": {
-   "test": "mocha Test/**/*.test.js --timeout 10000 --reporter mochawesome --reporter-options reportDir=./mochawesome-report,reportFilename=report",
+   "test": "mocha Test/**/*.test.js --timeout 10000 --reporter mochawesome ",
    "start": "node server.js"
   },
   "repository": {
