@@ -43,6 +43,14 @@ README.md           # Instruções
 
 A documentação interativa da API está disponível através do Swagger UI. Após iniciar o servidor, acesse: http://localhost:3000/api-docs
 
+### Pipeline
+- Instala dependências do Node.js
+- Executa testes automatizados (Mocha, Chai, Supertest)
+- Gera relatório de testes com Mochawesome
+- Faz upload do relatório como artefato do workflow
+
+O arquivo de configuração da pipeline está em `.github/workflows/api-tests.yml`.
+
 ## Tecnologias Utilizadas
 - Node.js
 - Express

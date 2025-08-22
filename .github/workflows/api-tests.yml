@@ -2,9 +2,9 @@ name: Testes API CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -25,9 +25,11 @@ jobs:
     - name: Run tests
       run: npm test
 
-    - name: Upload test results
+    - name: Archive test results
       if: always()
       uses: actions/upload-artifact@v4
       with:
+ Relatorios_Correção
         name: mochawesome-report
         path: mochawesome-report/mochawesome.html
+
