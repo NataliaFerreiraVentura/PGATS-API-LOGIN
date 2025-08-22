@@ -34,7 +34,7 @@ README.md           # Instruções
    ```
 2. Inicie o servidor:
    ```cmd
-   node server.js
+   node src/server.js
    ```
 
 ## Documentação Swagger

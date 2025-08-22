@@ -11,7 +11,7 @@ describe('API LOGIN', () => {
 
     describe('POST /users/register', () => {
 
-        it('deve criar usuário e retornar 201 quando dados válidos', async () => {
+        it('Deve criar um usuário e retornar 201 quando os dados são válidos', async () => {
             const userData = { 
                 name: 'John Doe', 
                 email: 'john@example.com', 
@@ -31,7 +31,7 @@ describe('API LOGIN', () => {
             expect(response.body.user).to.deep.equal(userData);
         });
 
-        it('deve retornar 400 quando campos obrigatórios ausentes', async () => {
+        it('Deve retornar 400 quando os campos obrigatórios estão ausentes', async () => {
             const userData = { 
                 name: 'John Doe', 
                 email: '', 
@@ -49,7 +49,7 @@ describe('API LOGIN', () => {
             expect(response.body).to.have.property('error', 'Todos os campos obrigatórios devem ser preenchidos.');
         });
 
-        it('deve retornar 400 quando usuário já existe', async () => {
+        it('Deve retornar 400 quando o usuário já existe', async () => {
             const userData = { 
                 name: 'John Doe', 
                 email: 'john@example.com', 
@@ -71,16 +71,19 @@ describe('API LOGIN', () => {
 
     describe('POST /users/login', () => {
 
-        it('Deve retornar 200 e token quando login bem-sucedido', async () => {
+        it('Deve retornar 200 e token quando login é bem-sucedido', async () => {
             const userData = {
                 login: 'Naty',
-                password: 'password123',
-                name: 'Natalia',
-                email: 'natyventura@gmail.com'
+                password: 'password123'
+
             };
 
-            sinon.stub(userService, 'loginUser').returns({ user: userData });
-
+            sinon.stub(userService, 'loginUser').returns({ 
+              user: userData, 
+              mensagem: 'Login realizado com sucesso',
+              token: 'fake-token-123'
+            });
+            
             const response = await request(app)
                 .post('/users/login')
                 .send({ login: 'Naty', password: 'password123' });
@@ -91,7 +94,7 @@ describe('API LOGIN', () => {
             expect(response.body.user).to.deep.equal(userData);
         });
 
-        it('Deve retornar 401 quando login ou senha inválidos', async () => {
+        it('Deve retornar 401 quando login ou senha são inválidos', async () => {
             const userData = { login: 'john.doe', password: 'password' };
 
             sinon.stub(userService, 'loginUser').returns({ error: 'Login ou senha inválidos.' });
