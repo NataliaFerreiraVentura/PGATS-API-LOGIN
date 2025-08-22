@@ -1,0 +1,234 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-22T00:03:13.067Z",
+    "end": "2025-08-22T00:03:13.172Z",
+    "duration": 105,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "15aecff1-dabf-4fb0-bf93-833069134f2c",
+      "title": "",
+      "fullFile": "C:\\Users\\natyv\\Documents\\ESTUDOS_AUTOMACAO_QA\\POS-GRADUAÇÃO\\Trabalho_API_lOGIN\\Test\\userController.test.js",
+      "file": "\\Test\\userController.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3429c983-c20e-485c-9333-df5d187d99ac",
+          "title": "API LOGIN",
+          "fullFile": "C:\\Users\\natyv\\Documents\\ESTUDOS_AUTOMACAO_QA\\POS-GRADUAÇÃO\\Trabalho_API_lOGIN\\Test\\userController.test.js",
+          "file": "\\Test\\userController.test.js",
+          "beforeHooks": [],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"API LOGIN\"",
+              "fullTitle": "API LOGIN \"after each\" hook in \"API LOGIN\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "sinon.restore()",
+              "err": {},
+              "uuid": "6f84cd98-1f84-402d-ac68-75aeb0031c79",
+              "parentUUID": "3429c983-c20e-485c-9333-df5d187d99ac",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "8fa4b139-c443-4b45-b960-12f95ff0292a",
+              "title": "POST /users/register",
+              "fullFile": "C:\\Users\\natyv\\Documents\\ESTUDOS_AUTOMACAO_QA\\POS-GRADUAÇÃO\\Trabalho_API_lOGIN\\Test\\userController.test.js",
+              "file": "\\Test\\userController.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "deve criar usuário e retornar 201 quando dados válidos",
+                  "fullTitle": "API LOGIN POST /users/register deve criar usuário e retornar 201 quando dados válidos",
+                  "timedOut": false,
+                  "duration": 53,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = { \n    name: 'John Doe', \n    email: 'john@example.com', \n    login: 'john.doe', \n    password: 'password123' \n};\n// Stub do serviço\nsinon.stub(userService, 'registerUser').returns({ success: true, user: userData });\nconst response = await request(app)\n    .post('/users/register')\n    .send(userData);\nexpect(response.status).to.equal(201);\nexpect(response.body.mensagem).to.equal('Usuário registrado com sucesso');\nexpect(response.body.user).to.deep.equal(userData);",
+                  "err": {},
+                  "uuid": "35ade57d-7936-4083-9aec-e996e73475ce",
+                  "parentUUID": "8fa4b139-c443-4b45-b960-12f95ff0292a",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "deve retornar 400 quando campos obrigatórios ausentes",
+                  "fullTitle": "API LOGIN POST /users/register deve retornar 400 quando campos obrigatórios ausentes",
+                  "timedOut": false,
+                  "duration": 10,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = { \n    name: 'John Doe', \n    email: '', \n    login: '', \n    password: 'password123' \n};\nsinon.stub(userService, 'registerUser').returns({ error: 'Todos os campos obrigatórios devem ser preenchidos.' });\nconst response = await request(app)\n    .post('/users/register')\n    .send(userData);\nexpect(response.status).to.equal(400);\nexpect(response.body).to.have.property('error', 'Todos os campos obrigatórios devem ser preenchidos.');",
+                  "err": {},
+                  "uuid": "ec652fd2-f91b-4ffe-a79b-9129fe274618",
+                  "parentUUID": "8fa4b139-c443-4b45-b960-12f95ff0292a",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "deve retornar 400 quando usuário já existe",
+                  "fullTitle": "API LOGIN POST /users/register deve retornar 400 quando usuário já existe",
+                  "timedOut": false,
+                  "duration": 6,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = { \n    name: 'John Doe', \n    email: 'john@example.com', \n    login: 'john.doe', \n    password: 'password123' \n};\nsinon.stub(userService, 'registerUser').returns({ error: 'Usuário já existente' });\nconst response = await request(app)\n    .post('/users/register')\n    .send(userData);\nexpect(response.status).to.equal(400);\nexpect(response.body).to.have.property('error', 'Usuário já existente');",
+                  "err": {},
+                  "uuid": "0c095f66-173e-4190-934f-1f8474130f6c",
+                  "parentUUID": "8fa4b139-c443-4b45-b960-12f95ff0292a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "35ade57d-7936-4083-9aec-e996e73475ce",
+                "ec652fd2-f91b-4ffe-a79b-9129fe274618",
+                "0c095f66-173e-4190-934f-1f8474130f6c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 69,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            },
+            {
+              "uuid": "89de4919-201e-4c7b-8c9e-6c45fdf2b115",
+              "title": "POST /users/login",
+              "fullFile": "C:\\Users\\natyv\\Documents\\ESTUDOS_AUTOMACAO_QA\\POS-GRADUAÇÃO\\Trabalho_API_lOGIN\\Test\\userController.test.js",
+              "file": "\\Test\\userController.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve retornar 200 e token quando login bem-sucedido",
+                  "fullTitle": "API LOGIN POST /users/login Deve retornar 200 e token quando login bem-sucedido",
+                  "timedOut": false,
+                  "duration": 10,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = {\n    login: 'Naty',\n    password: 'password123',\n    name: 'Natalia',\n    email: 'natyventura@gmail.com'\n};\nsinon.stub(userService, 'loginUser').returns({ user: userData });\nconst response = await request(app)\n    .post('/users/login')\n    .send({ login: 'Naty', password: 'password123' });\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('mensagem', 'Login realizado com sucesso');\nexpect(response.body).to.have.property('token');\nexpect(response.body.user).to.deep.equal(userData);",
+                  "err": {},
+                  "uuid": "73bdda19-bb93-4c2f-a78d-fd4a3264dd04",
+                  "parentUUID": "89de4919-201e-4c7b-8c9e-6c45fdf2b115",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Deve retornar 401 quando login ou senha inválidos",
+                  "fullTitle": "API LOGIN POST /users/login Deve retornar 401 quando login ou senha inválidos",
+                  "timedOut": false,
+                  "duration": 10,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const userData = { login: 'john.doe', password: 'password' };\nsinon.stub(userService, 'loginUser').returns({ error: 'Login ou senha inválidos.' });\nconst response = await request(app)\n    .post('/users/login')\n    .send(userData);\nexpect(response.status).to.equal(401);\nexpect(response.body).to.have.property('error', 'Login ou senha inválidos.');",
+                  "err": {},
+                  "uuid": "a2d13440-546d-4b9c-bb92-92101d920fab",
+                  "parentUUID": "89de4919-201e-4c7b-8c9e-6c45fdf2b115",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "73bdda19-bb93-4c2f-a78d-fd4a3264dd04",
+                "a2d13440-546d-4b9c-bb92-92101d920fab"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 20,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
