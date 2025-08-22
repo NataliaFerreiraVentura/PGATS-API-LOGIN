@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
    "test": "mocha Test/**/*.test.js --timeout 10000 --reporter mochawesome ",
-   "start": "node server.js"
+   "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
