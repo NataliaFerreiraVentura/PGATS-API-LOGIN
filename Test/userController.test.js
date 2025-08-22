@@ -75,9 +75,6 @@ describe('API LOGIN', () => {
             const userData = {
                 login: 'Naty',
                 password: 'password123'
-
-                password: 'password123'
-
             };
 
             sinon.stub(userService, 'loginUser').returns({
