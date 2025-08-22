@@ -46,8 +46,6 @@ A documentação interativa da API está disponível através do Swagger UI. Ap�
 ### Pipeline
 - Instala dependências do Node.js
 - Executa testes automatizados (Mocha, Chai, Supertest)
-- Gera relatório de testes com Mochawesome
-- Faz upload do relatório como artefato do workflow
 
 O arquivo de configuração da pipeline está em `.github/workflows/api-tests.yml`.
 
