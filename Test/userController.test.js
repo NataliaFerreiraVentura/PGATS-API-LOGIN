@@ -93,7 +93,7 @@ describe('API LOGIN', () => {
             expect(response.body.user).to.deep.equal(userData);
         });
 
-        it('Deve retornar 401 quando login ou senha são são inválidos', async () => {
+        it('Deve retornar 401 quando login ou senha são inválidos', async () => {
             const userData = { login: 'john.doe', password: 'password' };
 
             sinon.stub(userService, 'loginUser').returns({ error: 'Login ou senha inválidos.' });
